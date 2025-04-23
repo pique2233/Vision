@@ -2,8 +2,11 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import PointCloudRenderer from "./point-cloud-renderer"
 
 export default function PointCloudViewer() {
+  // 添加：点云文件路径
+  const plyFilePath = "/ply/demo15.ply";
   const [isRotating, setIsRotating] = useState(true)
 
   return (
@@ -20,15 +23,8 @@ export default function PointCloudViewer() {
           </div>
 
           <div className="relative w-full max-w-md h-64 bg-gray-200 rounded-lg overflow-hidden">
-            <Image
-              src="/placeholder.svg?height=400&width=600"
-              alt="Point Cloud Visualization Placeholder"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-gray-500 text-lg font-medium">3D Point Cloud Preview</span>
-            </div>
+            {/* 使用3D点云渲染组件 */}
+            <PointCloudRenderer plyPath={plyFilePath} />
           </div>
 
           <div className="flex gap-4 mt-8">
